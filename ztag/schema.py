@@ -614,12 +614,27 @@ ztag_ssh_banner = SubRecord({
         }),
     }),
     "dh_key_exchange": SubRecord({
-        "parameters": SubRecord({
-            "client_public":IndexedBinary(),
-            "client_private":IndexedBinary(),
-            "server_public":IndexedBinary(),
-            "prime":IndexedBinary(),
-            "generator":IndexedBinary(),
+        "params": SubRecord({
+            "prime": SubRecord({
+                "value":IndexedBinary(),
+                "length":Unsigned32BitInteger()
+            }),
+            "generator": SubRecord({
+                "value":IndexedBinary(),
+                "length":Unsigned32BitInteger()
+            }),
+            "client_public": SubRecord({
+                "value":IndexedBinary(),
+                "length":Unsigned32BitInteger()
+            }),
+            "client_private": SubRecord({
+                "value":IndexedBinary(),
+                "length":Unsigned32BitInteger()
+            }),
+            "server_public": SubRecord({
+                "value":IndexedBinary(),
+                "length":Unsigned32BitInteger()
+            }),
         }),
         "server_signature":ztag_ssh_signature,
         "server_host_key":SubRecord({
